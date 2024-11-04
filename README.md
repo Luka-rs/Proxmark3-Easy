@@ -23,44 +23,44 @@ Before you start, ensure you have the following:
 ## Installation Steps
 
 ### 1. Update and Upgrade the Raspberry Pi
-\`\`\`bash
+```bash
 sudo apt-get update
 sudo apt-get upgrade -y
-\`\`\`
+```
 
 ### 2. Install Required Dependencies
-\`\`\`bash
+```bash
 sudo apt-get install -y git gcc make libreadline-dev libusb-dev libssl-dev
-\`\`\`
+```
 
 ### 3. Clone the Proxmark3 Repository
-\`\`\`bash
+```bash
 git clone https://github.com/RfidResearchGroup/proxmark3.git
 cd proxmark3
-\`\`\`
+```
 
 ## Firmware Compilation and Flashing
 
 ### 4. Clean Previous Builds
-\`\`\`bash
+```bash
 make clean
-\`\`\`
+```
 
 ### 5. Compile the Firmware for Proxmark3 Easy
-\`\`\`bash
+```bash
 make all PLATFORM=PM3OTHER
-\`\`\`
+```
 
 ### 6. Flash the Firmware
 
-Navigate to the \`client\` directory and flash the compiled firmware to your Proxmark3 Easy:
+Navigate to the `client` directory and flash the compiled firmware to your Proxmark3 Easy:
 
-\`\`\`bash
+```bash
 cd client
 ./proxmark3 /dev/ttyACM0 --flash --image ../armsrc/obj/fullimage.elf
-\`\`\`
+```
 
-Ensure that \`/dev/ttyACM0\` is the correct path to your device. You can check this using \`dmesg\` if needed.
+Ensure that `/dev/ttyACM0` is the correct path to your device. You can check this using `dmesg` if needed.
 
 ## Verifying the Installation
 
@@ -68,12 +68,12 @@ Ensure that \`/dev/ttyACM0\` is the correct path to your device. You can check t
 
 After flashing, reconnect your Proxmark3 Easy and verify the firmware:
 
-\`\`\`bash
+```bash
 ./proxmark3 /dev/ttyACM0
 hw version
-\`\`\`
+```
 
-The output should show \`PM3 GENERIC\` as the firmware type, indicating the correct firmware for Proxmark3 Easy.
+The output should show `PM3 GENERIC` as the firmware type, indicating the correct firmware for Proxmark3 Easy.
 
 ## Usage
 
@@ -81,9 +81,9 @@ The output should show \`PM3 GENERIC\` as the firmware type, indicating the corr
 
 Run the following command to ensure your device is functioning properly:
 
-\`\`\`bash
+```bash
 hf search
-\`\`\`
+```
 
 This command will search for any high-frequency tags near the device.
 
@@ -91,8 +91,8 @@ This command will search for any high-frequency tags near the device.
 
 If you encounter any issues during the setup or firmware flashing process, try the following:
 
-- **Firmware Mismatch**: Ensure that the firmware was compiled specifically for the Proxmark3 Easy using \`PLATFORM=PM3OTHER\`.
-- **Communication Issues**: Double-check the USB connection and device path. Use \`dmesg\` to confirm the correct \`/dev/ttyACM0\` path.
+- **Firmware Mismatch**: Ensure that the firmware was compiled specifically for the Proxmark3 Easy using `PLATFORM=PM3OTHER`.
+- **Communication Issues**: Double-check the USB connection and device path. Use `dmesg` to confirm the correct `/dev/ttyACM0` path.
 - **Recompile and Flash**: If problems persist, recompile the firmware and flash it again using the steps provided above.
 
 ## References
